@@ -2,11 +2,23 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+// model instance method to check password
 class User extends Model {
     checkPassword(logInPw) {
+        // 
         return bcrypt.compareSync(logInPw, this.password);
     }
 }
+
+/*
+
+USER ------
+   id: int, PK
+   name: str(unique)
+   email: str(email)
+   password: str(len>=8)
+
+*/
 
 User.init(
     {
@@ -18,7 +30,8 @@ User.init(
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         email: {
             type: DataTypes.STRING,
@@ -37,6 +50,8 @@ User.init(
         }
     },
     {
+        // before creating an instance of the user, encrypt the password for storage.
+        // app will decrypt password during checkPassword function on login attempt
         hooks: {
             beforeCreate: async (newUserData) => {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
@@ -51,4 +66,4 @@ User.init(
     }
 )
 
-module.exports = user;
+module.exports = User;
