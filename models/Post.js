@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const { default: ModelManager } = require('sequelize/types/model-manager');
 const sequelize = require('../config/connection');
 
 class Post extends Model { }
