@@ -8,13 +8,7 @@ router.get('/', async (req, res) => {
    try {
       let loggedIn = false; // temp
 
-      if (loggedIn) {
-         res.render('homepage', {
-            loggedIn: true
-         });
-      } else {
-         res.render('login', {});
-      }
+      res.render('homepage', {});
    } catch (err) {
       console.log(err);
       res.status(500).json(err);
