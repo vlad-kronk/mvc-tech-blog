@@ -8,7 +8,14 @@ User.hasMany(Post, {
 });
 Post.belongsTo(User);
 
+// implement one-to-many association between a post and its comments
+Post.hasMany(Comment, {
+   foreignKey: 'post_id'
+});
+Comment.belongsTo(Post);
+
 module.exports = {
    User,
-   Post
+   Post,
+   Comment
 };
