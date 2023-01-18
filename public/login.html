@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Dashboard</title>
+  <title>Login</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,54 +30,56 @@
                   <a class="nav-link" href="./homepage.html" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link active" href="#">Dashboard</a>
+                  <a class="nav-link" href="./dashboard.html">Dashboard</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="./login.html">Log in</a>
+                  <a class="nav-link active" href="#">Log in</a>
                </li>
             </ul>
          </div>
       </div>
-    </nav>    
+    </nav>
   </header>
   <main>
-   <h1 class="display-1 d-block mx-auto my-5 w-75">Hi, Jacob!</h1>
-   <div class="w-75 mx-auto">
-      <div class="mb-3 w-100">
-         <label for="title" class="form-label">Create new post</label>
-         <input type="text" class="form-control" id="postTitle" placeholder="Post title">
-       </div>
-       <div class="mb-3 w-100">
-         <textarea class="form-control" id="postContent" rows="10" placeholder="Write your post here..."></textarea>
+   <h1 class="display-1 w-100 text-center my-5">Welcome!</h1>
+   <div class="login-grid-container w-50 mx-auto my-5">
+      <div class="row">
+        <div class="col-5">
+          <div class="card login-card">
+            <div class="card-body">
+              <h3 class="card-title w-100 text-center">Log in</h3>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="...">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="...">
+              </div>
+              <button class="btn btn-primary" style="width: 100px; float: right" type="submit">Login</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+         <h2 class="display-6 text-center">or</h2>
+        </div>
+        <div class="col-5">
+          <div class="card signup-card">
+            <div class="card-body">
+              <h3 class="card-title w-100 text-center">Sign up</h3>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="...">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="...">
+              </div>
+              <button class="btn btn-primary" style="width: 150px; float: right" type="submit">Create account</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-primary" style="width: 100px; float: right" type="submit">Post!</button>
-   </div>
-   <h2 class="display-5 w-75 my-5 mx-auto">My posts</h2>
-   <div class="post-container w-75 mx-auto">
-      <a class="text-dark" href="#" style="text-decoration:none">
-         <div class="card my-4 post-body">
-            <div class="card-body post-body">
-               <h4 class="card-title post-title">Occaecat fugiat dolor non id id aute labore exercitation irure.</h4>
-               <p class="card-text post-author">Jacob Meyers</p>
-            </div>
-         </div>
-      </a>
-      <a class="text-dark" href="#" style="text-decoration:none">
-         <div class="card my-4 post-body">
-            <div class="card-body post-body">
-               <h4 class="card-title post-title">Voluptate deserunt fugiat ad ut proident officia id consequat labore anim minim proident ut.</h4>
-               <p class="card-text post-author">Jacob Meyers</p>
-            </div>
-         </div>
-      </a>
-      <a class="text-dark" href="#" style="text-decoration:none">
-         <div class="card my-4 post-body">
-            <div class="card-body post-body">
-               <h4 class="card-title post-title">Non laborum nulla mollit ut reprehenderit aliquip cupidatat in excepteur.</h4>
-               <p class="card-text post-author">Jacob Meyers</p>
-            </div>
-         </div>
-      </a>
    </div>
   </main>
   <footer>
