@@ -6,7 +6,9 @@ const { Post, User } = require('../../models');
 // GET all posts
 router.get('/', async (req, res) => {
    try {
-      let loggedIn = false; // temp
+      let loggedIn = true; // temp
+
+      
 
       res.render('homepage', {});
    } catch (err) {

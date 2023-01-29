@@ -1,0 +1,46 @@
+html {
+   background-image: url("../images/bg-image-3.jpg");
+   /* Create the parallax scrolling effect */
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   /* Full height */
+   min-height: 100vh;
+}
+
+body {
+   background-color: transparent;
+   padding: 0px;
+   height: 100vh;
+}
+
+.page-content {
+   width: 70%;
+   height: 100%;
+   min-height: 100vh;
+   margin: 0 auto;
+   padding-top: 80px;
+   padding-bottom: 150px;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.navbar {
+   position: fixed;
+   width: 100%;
+   top: 0;
+}
+
+.post-content {
+   white-space: pre-wrap;
+   line-height: 2.2rem;
+   font-size: 1.2rem;
+}
+
+.author {
+   text-decoration: none;
+}
+
+.back-to-top {
+   width: 150px;
+}

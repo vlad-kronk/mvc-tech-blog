@@ -11,13 +11,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-   <link href="./style.css" rel="stylesheet">
+   <link href="./assets/styles/style.css" rel="stylesheet">
 
 </head>
 
-<body class="bg-light">
+<body>
   <header>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
          <a class="navbar-brand" href="#">Tech Blog</a>
          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -27,7 +27,7 @@
          <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                <li class="nav-item">
-                  <a class="nav-link" href="./homepage.html" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                  <a class="nav-link" href="./homepage.html">Home</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="./dashboard.html">Dashboard</a>
@@ -41,6 +41,7 @@
     </nav>
   </header>
   <main>
+    <div class="page-content bg-light">
    <h1 class="display-1 w-100 text-center my-5">Welcome!</h1>
    <div class="login-grid-container w-50 mx-auto my-5">
       <div class="row">
@@ -50,35 +51,44 @@
               <h3 class="card-title w-100 text-center">Log in</h3>
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="...">
+                <input type="text" class="form-control" name="username" id="username">
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="...">
+                <input type="password" class="form-control" name="password" id="password">
               </div>
               <button class="btn btn-primary" style="width: 100px; float: right" type="submit">Login</button>
             </div>
           </div>
         </div>
         <div class="col-2">
-         <h2 class="display-6 text-center">or</h2>
+         <h2 class="display-6 text-center mt-5">or</h2>
         </div>
         <div class="col-5">
           <div class="card signup-card">
             <div class="card-body">
               <h3 class="card-title w-100 text-center">Sign up</h3>
               <div class="mb-3">
+                <label for="first-name" class="form-label">First name</label>
+                <input type="text" class="form-control" name="first-name" id="first-name">
+              </div>
+              <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="...">
+                <input type="text" class="form-control" name="username" id="username">
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="...">
+                <input type="password" class="form-control" name="password" id="password">
+              </div>
+              <div class="mb-3">
+                <label for="c-password" class="form-label">Confirm password</label>
+                <input type="password" class="form-control" name="c-password" id="c-password">
               </div>
               <button class="btn btn-primary" style="width: 150px; float: right" type="submit">Create account</button>
             </div>
           </div>
         </div>
+      </div>
       </div>
    </div>
   </main>
