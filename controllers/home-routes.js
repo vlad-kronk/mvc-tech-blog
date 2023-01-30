@@ -60,6 +60,6 @@ router.get('/login', async (req, res) => {
    }
    // if not, render login page
    res.render('login');
-})
+});
 
 module.exports = router;

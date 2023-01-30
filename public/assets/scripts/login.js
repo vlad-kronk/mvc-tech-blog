@@ -21,8 +21,10 @@ const loginFormHandler = async (event) => {
          }
       });
       if (response.ok) {
+         // gottem
          document.location.replace('/');
       } else {
+         // stop. get some help
          alert('Incorrect username or password.');
       }
    }
@@ -52,10 +54,15 @@ const signupFormHandler = async (event) => {
             }
          });
          if (response.ok) {
+            // gottem
             document.location.replace('/');
          } else {
-            alert ('Invalid signup')
+            // stop. get some help
+            alert('Invalid signup information. Try again.');
          }
       }
    }
 }
+// add event listeners to the submit buttons
+loginFormEl.addEventListener('submit', loginFormHandler);
+signupFormEl.addEventListener('submit', signupFormHandler);
