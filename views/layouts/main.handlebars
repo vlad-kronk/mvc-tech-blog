@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   <title>{{ page_title }}</title>
+   <title>{{ data.page_title }}</title>
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,26 +28,26 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                   <li class="nav-item">
-                     {{#if is_home}}
+                     {{#if (isHome data.page_title)}}
                      <a class="nav-link active" href="/home">Home</span></a>
-                     {{#else}}
+                     {{else}}
                      <a class="nav-link" href="/home">Home</span></a>
                      {{/if}}
                   </li>
                   <li class="nav-item">
-                     {{#if is_dash}}
+                     {{#if (isDash data.page_title)}}
                      <a class="nav-link active" href="/dashboard">Dashboard</a>
-                     {{#else}}
+                     {{else}}
                      <a class="nav-link" href="/dashboard">Dashboard</a>
                      {{/if}}
                   </li>
                   <li class="nav-item">
-                     {{#if logged_in}}
+                     {{#if data.logged_in}}
                      <a class="nav-link" href="/logout">Log out</a>
-                     {{#else}}
-                     {{#if is_login}}
+                     {{else}}
+                     {{#if (isLogin data.page_title)}}
                      <a class="nav-link active" href="/login">Log in</a>
-                     {{#else}}
+                     {{else}}
                      <a class="nav-link" href="/login">Log in</a>
                      {{/if}}
                      {{/if}}

@@ -29,6 +29,8 @@ body {
    position: fixed;
    width: 100%;
    top: 0;
+   /* make sure nothing scrolls over nav */
+   z-index: 99;
 }
 
 .card .post-title {

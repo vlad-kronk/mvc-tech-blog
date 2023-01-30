@@ -34,6 +34,7 @@ Comment.init(
       sequelize,
       freezeTableName: true,
       timestamps: true,
+      underscored: true
    }
 )
 
