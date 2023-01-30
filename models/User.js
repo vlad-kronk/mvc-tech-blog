@@ -5,7 +5,6 @@ const sequelize = require('../config/connection');
 // model instance method to check password
 class User extends Model {
     checkPassword(logInPw) {
-        // 
         return bcrypt.compareSync(logInPw, this.password);
     }
 }
@@ -14,9 +13,10 @@ class User extends Model {
 
 USER ------
    id: int, PK
-   name: str(unique)
-   email: str(email)
-   password: str(len>=8)
+   name: str
+   username: str [a-z0-9_-]
+   password: str (32 >= len >= 8)
+   background_image: int (default 3)
 
 */
 
@@ -30,23 +30,37 @@ User.init(
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
-        email: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
-                isEmail: true
+                is: {
+                    args: ["^[a-z0-9_-]*$", "i"],
+                    msg: "Username must only contain letters, numbers, underscores and dashes"
+                }
             }
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8]
+                len: {
+                    args: [8, 32],
+                    msg: "Password length must be between 8 and 32 characters"
+                }
             }
+        },
+        background_image: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                min: 1,
+                max: 6
+            },
+            defaultValue: 3
         }
     },
     {
