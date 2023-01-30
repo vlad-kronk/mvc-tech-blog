@@ -2,7 +2,10 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const SequelizeStore =
+  require('connect-session-sequelize')(
+    session.Store
+  );
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -10,15 +13,13 @@ const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// const hbs = expbars.create({ helpers })
-
 // Sets up session and connect to our Sequelize db
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SECRET,
   // Express session will use cookies by default, but we can specify options for those cookies by adding a cookies property to our session options.
   cookie: {
-    // maxAge sets the maximum age for the cookie to be valid. Here, the cookie (and session) will expire after one hour. The time should be given in milliseconds.
-    maxAge: 60 * 60 * 1000,
+    // maxAge sets the maximum age for the cookie to be valid. Here, the cookie (and session) will expire after 5 hours. The time should be given in milliseconds.
+    maxAge: 5 * 60 * 60 * 1000,
     // httpOnly tells express-session to only store session cookies when the protocol being used to connect to the server is HTTP.
     httpOnly: true,
     // secure tells express-session to only initialize session cookies when the protocol being used is HTTPS. Having this set to true, and running a server without encryption will result in the cookies not showing up in your developer console.
@@ -36,17 +37,42 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers,
+});
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+app.engine(
+  "handlebars",
+  hbs.engine
+);
+app.set(
+  "view engine",
+  "handlebars"
+);
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(
+  express.static(
+    path.join(
+      __dirname,
+      "public"
+    )
+  )
+);
 
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(
+        "Now listening"
+      )
+    );
+  });

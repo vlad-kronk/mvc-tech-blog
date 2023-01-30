@@ -1,17 +1,16 @@
-const Sequelize = require("sequelize");
-require("dotenv").config();
+require('dotenv').config();
 
-let sequelize;
+const Sequelize = require('sequelize');
 
-sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS,
-    {
-        host: 'localhost',
+// first connect to HEROKU if deployed, else localhost   
+const sequelize = process.env.JAWSDB_URL
+    ? new Sequelize(process.env.JAWSDB_URL)
+    : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+        host: '127.0.0.1',
         dialect: 'mysql',
-        port: 3001
-    }
-);
+        dialectOptions: {
+            decimalNumbers: true,
+        },
+    });
 
 module.exports = sequelize;
