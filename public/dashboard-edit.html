@@ -30,7 +30,7 @@
                   <a class="nav-link" href="./homepage.html">Home</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="./dashboard.html">Dashboard</a>
+                  <a class="nav-link" href="./dashboard-view.html">Dashboard</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="./login.html">Log in</a>
@@ -45,55 +45,65 @@
          <h1 class="display-1 d-block mx-auto my-5 w-75">Let's get this sorted.</h1>
          <div class="w-75 mx-auto">
             <div class="mb-3 w-100 container px-0 mx-0">
-               <div class="row my-3">
-                  <div class="col-xxl-4 col-lg-6 col-sm-12">
-                     <label for="full-name" class="form-label">First name</label>
-                     <input type="text" class="form-control" id="full-name" placeholder="Jacob">
+               <form id="profile-edit-">
+                  <div class="row my-3">
+                     <div class="col-xxl-4 col-lg-6 col-sm-12">
+                        <label for="full-name" class="form-label">First name</label>
+                        <input type="text" class="form-control" id="full-name" placeholder="Jacob">
+                     </div>
                   </div>
-               </div>
-               <div class="row my-3">
-                  <div class="col-xxl-4 col-lg-6 col-sm-12">
-                     <label for="full-name" class="form-label">Username</label>
-                     <input type="text" class="form-control" id="full-name" placeholder="vlad kronk" disabled readonly>
+                  <div class="row my-3">
+                     <div class="col-xxl-4 col-lg-6 col-sm-12">
+                        <label for="full-name" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="full-name" placeholder="vlad kronk" disabled readonly>
+                     </div>
                   </div>
-               </div>
-               <div class="row my-3">
-                  <div class="col-xxl-4 col-lg-6 col-sm-12">
-                     <label for="old-password" class="form-label">Old password</label>
-                     <input type="password" class="form-control" id="old-password">
+                  <div class="row my-3">
+                     <div class="col-xxl-4 col-lg-6 col-sm-12">
+                        <label for="old-password" class="form-label">Old password</label>
+                        <input type="password" class="form-control" id="old-password">
+                     </div>
                   </div>
-               </div>
-               <div class="row my-3">
-                  <div class="col-xxl-4 col-lg-6 col-sm-12">
-                     <label for="new-password" class="form-label">New password</label>
-                     <input type="password" class="form-control" id="new-password">
+                  <div class="row my-3">
+                     <div class="col-xxl-4 col-lg-6 col-sm-12">
+                        <label for="new-password" class="form-label">New password</label>
+                        <input type="password" class="form-control" id="new-password">
+                     </div>
                   </div>
-               </div>
-               <div class="row my-3">
-                  <div class="col-xxl-4 col-lg-6 col-sm-12">
-                     <label for="c-new-password" class="form-label">Confirm new password</label>
-                     <input type="password" class="form-control" id="c-new-password">
+                  <div class="row my-3">
+                     <div class="col-xxl-4 col-lg-6 col-sm-12">
+                        <label for="c-new-password" class="form-label">Confirm new password</label>
+                        <input type="password" class="form-control" id="c-new-password">
+                     </div>
                   </div>
-               </div>
-               <label class="form-label">Profile background:</label>
-               <div class="row my-3">
-                  <ul class="image-selection">
-                     <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-1"  src="./assets/images/bg-image-1.jpg"></li>
-                     <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-2"  src="./assets/images/bg-image-2.jpg"></li>
-                     <li class="col-3"><img class="img-thumbnail my-2 selected" id="bg-image-3" src="./assets/images/bg-image-3.jpg"></li>
-                     <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-4"  src="./assets/images/bg-image-4.jpg"></li>
-                     <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-5"  src="./assets/images/bg-image-5.jpg"></li>
-                     <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-6"  src="./assets/images/bg-image-6.jpg"></li>
-                  </ul>
-               </div>
-               <div class="row my-3">
-                  <div class="col-xxl-2 col-lg-3 col-sm-6">
-                     <button class="btn btn-secondary cancel-btn w-100 mb-3">Cancel</button>
+                  <label class="form-label">Profile background:</label>
+                  <div class="row my-3">
+                     <ul class="image-selection">
+                        <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-1"  src="./assets/images/bg-image-1.jpg"></li>
+                        <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-2"  src="./assets/images/bg-image-2.jpg"></li>
+                        <li class="col-3"><img class="img-thumbnail my-2 selected" id="bg-image-3" src="./assets/images/bg-image-3.jpg"></li>
+                        <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-4"  src="./assets/images/bg-image-4.jpg"></li>
+                        <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-5"  src="./assets/images/bg-image-5.jpg"></li>
+                        <li class="col-3"><img class="img-thumbnail my-2" id="bg-image-6"  src="./assets/images/bg-image-6.jpg"></li>
+                     </ul>
                   </div>
-                  <div class="col-xxl-2 col-lg-3 col-sm-6">                     
-                     <button class="btn btn-primary save-btn w-100" type="submit">Save</button>
+                  <div class="img-selection-radio d-none">
+                     <input type="radio" id="radio-bg-image-1" name="image-selection" value="bg-image-1">
+                     <input type="radio" id="radio-bg-image-2" name="image-selection" value="bg-image-2">
+                     <input type="radio" id="radio-bg-image-3" name="image-selection" value="bg-image-3">
+                     <input type="radio" id="radio-bg-image-4" name="image-selection" value="bg-image-4">
+                     <input type="radio" id="radio-bg-image-5" name="image-selection" value="bg-image-5">
+                     <input type="radio" id="radio-bg-image-6" name="image-selection" value="bg-image-6">
                   </div>
-               </div>
+                  <div class="row my-3">
+                     <div class="col-xxl-2 col-lg-3 col-sm-6">
+                        <button class="btn btn-secondary cancel-btn w-100 mb-3">Cancel</button>
+                     </div>
+                     <div class="col-xxl-2 col-lg-3 col-sm-6">                     
+                        <button class="btn btn-primary save-btn w-100" type="submit">Save</button>
+                     </div>
+                  </div>
+               </form>
             </div>
          </div>
       </div>

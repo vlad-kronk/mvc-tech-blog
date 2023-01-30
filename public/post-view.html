@@ -30,7 +30,7 @@
                   <a class="nav-link" href="./homepage.html">Home</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="./dashboard.html">Dashboard</a>
+                  <a class="nav-link" href="./dashboard-view.html">Dashboard</a>
                </li> 
                <li class="nav-item">
                   <a class="nav-link" href="./login.html">Log in</a>
@@ -42,10 +42,11 @@
   </header>
   <main>
    <div class="page-content bg-light">
-   <h1 class="display-4 d-block mx-auto my-5 w-75">Post title</h1>
-   <h2 class="display-6 d-block mx-auto my-3 w-75">By: <a class="text-primary author" href="#">username</a></h2>
-   <div class="post-container w-75 mx-auto">
-      <p class="post-content">
+      <h1 class="display-1 d-block mx-auto my-5 w-75">Post title</h1>
+      <h2 class="display-6 d-block mx-auto my-3 w-75">By: <a class="text-primary author" href="#">username</a></h2>
+      <p class="d-block mx-auto my-4 w-75">Last updated on Jan 29, 2023</p>
+      <section class="post-container w-75 mx-auto">
+         <p class="post-content">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus turpis massa tincidunt dui ut ornare. Leo in vitae turpis massa sed elementum tempus egestas. Tellus rutrum tellus pellentesque eu. Cras ornare arcu dui vivamus arcu felis bibendum. Sed risus ultricies tristique nulla. Nunc sed blandit libero volutpat sed. Sem fringilla ut morbi tincidunt augue interdum velit euismod. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper eget. Mauris in aliquam sem fringilla ut morbi tincidunt. Augue neque gravida in fermentum et.
 
 Neque viverra justo nec ultrices dui sapien eget. Nibh sit amet commodo nulla facilisi nullam vehicula. Turpis cursus in hac habitasse platea. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Tristique senectus et netus et malesuada fames ac. Vel risus commodo viverra maecenas. In vitae turpis massa sed. Nunc eget lorem dolor sed viverra. Ultrices vitae auctor eu augue ut. Ac auctor augue mauris augue. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in. Leo duis ut diam quam nulla porttitor massa id neque. Mi bibendum neque egestas congue quisque egestas diam in. Convallis aenean et tortor at risus viverra adipiscing at in.
@@ -69,9 +70,28 @@ At imperdiet dui accumsan sit amet nulla. Eget mauris pharetra et ultrices neque
 Vulputate mi sit amet mauris commodo quis imperdiet. Ac placerat vestibulum lectus mauris ultrices eros in. Id volutpat lacus laoreet non curabitur gravida arcu ac. Erat imperdiet sed euismod nisi porta lorem mollis aliquam ut. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Purus sit amet volutpat consequat mauris nunc congue nisi. Vitae ultricies leo integer malesuada nunc vel risus commodo. Vestibulum rhoncus est pellentesque elit ullamcorper. At lectus urna duis convallis convallis tellus. Id diam vel quam elementum pulvinar etiam non quam lacus. Enim nunc faucibus a pellentesque sit amet porttitor eget dolor. Nunc sed velit dignissim sodales ut eu sem integer. Duis at consectetur lorem donec. Sociis natoque penatibus et magnis dis. Tempus quam pellentesque nec nam aliquam sem et tortor consequat. In arcu cursus euismod quis.
 
 Malesuada fames ac turpis egestas integer eget aliquet. Maecenas sed enim ut sem. Cras semper auctor neque vitae tempus quam pellentesque nec nam. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam. Ac tortor dignissim convallis aenean et tortor at risus. Orci dapibus ultrices in iaculis nunc sed augue. Felis eget nunc lobortis mattis. Sem integer vitae justo eget magna fermentum iaculis eu non. Non blandit massa enim nec dui nunc mattis enim ut. Enim ut tellus elementum sagittis vitae et leo duis ut. Enim ut sem viverra aliquet eget sit amet tellus. Lectus nulla at volutpat diam. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Urna condimentum mattis pellentesque id nibh tortor. Egestas quis ipsum suspendisse ultrices gravida. Diam maecenas ultricies mi eget mauris pharetra et ultrices. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Odio eu feugiat pretium nibh ipsum consequat. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Nibh sit amet commodo nulla facilisi nullam vehicula.
-      </p>
-      <button class="btn btn-secondary" onclick="window.location.href='#top'">Back to top</button>
-   </div>
+         </p>
+         <button class="btn btn-secondary mx-0" onclick="window.location.href='#top'">Back to top</button>
+      </section>
+      <section class="comment-section-container">
+         <div class="comment-form-container container mt-5 ml-5 px-0" style="width: 65%">
+            <form class="row gx-2">
+               <div>
+                  <input type="text" class="form-control col" id="comment-input" placeholder="Add a comment...">
+                  <button class="btn btn-primary comment-btn col-xxl-1 col-lg-2 col-sm-3 my-2" type="submit">Post</button>
+               </div>
+            </form>
+         </div>
+         <section class="comment-section-container mt-5" style="width: 50%; margin-left: 17.5%">
+            <div class="card">
+               <div class="card-body">
+                 <h5 class="card-title"><a href="#" class="text-primary">Comment author</a></h5>
+                 <h6 class="card-subtitle mb-2 text-muted">Jan 30, 2023</h6>
+                 <p class="card-text">Nostrud exercitation ex incididunt quis mollit dolor esse. Amet sint pariatur occaecat amet esse ad. Nulla deserunt adipisicing sunt occaecat do ut commodo laboris non sunt eiusmod incididunt. Amet dolore velit consequat non adipisicing fugiat aliquip sit. Elit labore ad adipisicing labore minim culpa ex pariatur dolore labore.</p>
+               </div>
+             </div>
+         </section>
+      </section>
    </div>
   </main>
   <footer>
