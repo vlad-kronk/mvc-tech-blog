@@ -30,7 +30,13 @@ User.init(
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                is: {
+                    args: ["^[a-z0-9-]*$", "i"],
+                    msg: "Name must only contain letters, numbers and dashes"
+                }
+            }
         },
         username: {
             type: DataTypes.STRING,

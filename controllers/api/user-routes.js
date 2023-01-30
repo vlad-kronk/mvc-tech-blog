@@ -2,6 +2,10 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 // log in
+// body: {
+//    username: str
+//    password: str
+// }
 router.post('/login', async (req, res) => {
    try {
       // look for the user with the given username in db
@@ -35,6 +39,7 @@ router.post('/login', async (req, res) => {
 });
 
 // log out
+// body: n/a
 router.post('/logout', async (req, res) => {
    // if the user is logged in
    if (req.session.loggedIn) {
@@ -48,6 +53,11 @@ router.post('/logout', async (req, res) => {
 })
 
 // sign up
+// body: {
+//    name: str
+//    username: str
+//    password: str
+// }
 router.post('/signup', async (req, res) => {
    try {
       // create a user with the info provided in the request body
@@ -67,3 +77,5 @@ router.post('/signup', async (req, res) => {
       res.status(500).json(err);
    }
 });
+
+module.exports = router;
