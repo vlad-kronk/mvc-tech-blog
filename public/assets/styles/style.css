@@ -31,6 +31,13 @@ body {
    top: 0;
 }
 
+.card .post-title {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   padding-right: 40px;
+}
+
 .post-content {
    white-space: pre-wrap;
    line-height: 2.2rem;
@@ -43,4 +50,19 @@ body {
 
 .back-to-top {
    width: 150px;
+}
+
+.image-selection li {
+   display: inline;
+}
+
+.image-selection li img {
+   height: 200px;
+   width: auto;
+}
+
+@media screen and (max-width: 575px) {
+   .page-content {
+      width: 90%;
+   }
 }
