@@ -1,13 +1,24 @@
 const router = require("express").Router();
 
 // import models
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment } = require('../models');
 
-// GET all posts
+// homepage
 router.get('/', async (req, res) => {
    try {
-      let loggedIn = true; // temp
-
+      // gets all posts including authors and dates
+      const dbPosts = await Post.findAll({
+         include: [
+            {
+               model: Post,
+               attributes: ["id", "title", "user_id", "date_updated"]
+            },
+            {
+               model: User,
+               attributes: ["username"]
+            }
+         ]
+      })
 
 
       res.render('homepage', {});
@@ -16,3 +27,5 @@ router.get('/', async (req, res) => {
       res.status(500).json(err);
    }
 });
+
+module.exports = router;
