@@ -1,0 +1,27 @@
+<div class="page-content bg-light">
+   <h1 class="display-1 d-block mx-auto my-5 w-75">{{ data.post.title }}</h1>
+   <h2 class="display-6 d-block mx-auto my-3 w-75">By: {{ data.post.author }}</h2>
+   <p class="d-block mx-auto my-4 w-75">Last updated on {{ data.post.updated_at }}</p>
+   <section class="post-container w-75 mx-auto">
+      <p class="post-content">
+         {{ data.post.content }}
+      </p>
+      <button class="btn btn-secondary mx-0" onclick="window.location.href='#top'">Back to top</button>
+   </section>
+   <section class="comment-section-container">
+      <div class="comment-form-container container mt-5 ml-5 px-0" style="width: 65%">
+         <form class="row gx-2" id="comment-form">
+            <div>
+               <input type="text" class="form-control col" id="comment-input" placeholder="Add a comment...">
+               <button class="btn btn-primary comment-btn col-xxl-1 col-lg-2 col-sm-3 my-2" style="float: right;"
+                  type="submit">Post</button>
+            </div>
+         </form>
+      </div>
+      <section class="comment-section-container container mt-5" style="width: 60%; margin-left: 17.5%">
+         {{#each data.comments as |comment|}}
+         {{>comment c=comment u=data.user.id}}
+         {{/each}}
+      </section>
+   </section>
+</div>

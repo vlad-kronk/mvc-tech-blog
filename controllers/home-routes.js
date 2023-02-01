@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
             'updatedAt',
             'createdAt'
          ]
-      })
+      });
       // creates an array of post previews, formatted for display
       const post_previews = dbPosts.map((post) => {
          // only need date part of timestamp
@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
             updated_at: moment(date, 'YYYY-MM-DD').format('MMM DD, YYYY')
          };
          return result;
-      })
+      });
       // object with all required page data
       const res_data = {
          page_title: 'Home',
@@ -108,7 +108,7 @@ router.get('/dashboard', async (req, res) => {
                // pre-formats the date for display
                updated_at: moment(date, 'YYYY-MM-DD').format('MMM DD, YYYY')
             }
-         })
+         });
          // set up an object with all req'd page data
          const res_data = {
             page_title: 'Dashboard',
@@ -118,6 +118,72 @@ router.get('/dashboard', async (req, res) => {
          }
          res.render('dashboard-view', { data: res_data });
       }
+   } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+   }
+});
+
+// get one post by id
+router.get("/post/:id", async (req, res) => {
+   try {
+      // only execute if user is logged in
+      if (!req.session.logged_in) {
+         res.redirect('/login');
+         return;
+      }
+      // get the requested post data
+      const dbPostData = await Post.findByPk(req.params.id, {
+         include: {
+            model: User,
+            attributes: ['username']
+         },
+         attributes: ['id', 'title', 'content', 'updatedAt'],
+         nest: true,
+         raw: true
+      });
+      // find all the comments related to that post
+      const dbCommentData = await Comment.findAll({
+         where: {
+            post_id: req.params.id
+         },
+         include: {
+            model: User,
+            attributes: ['username']
+         },
+         attributes: ['id', 'text', 'user_id', 'createdAt']
+      });
+      // format date for display
+      let date = JSON.stringify(dbPostData.updatedAt);
+      date = date.substring(1, 11);
+      // format a response object for handlebars
+      const res_data = {
+         page_title: dbPostData.title,
+         logged_in: req.session.logged_in,
+         user: {
+            id: req.session.user_id
+         },
+         post: {
+            title: dbPostData.title,
+            author: dbPostData.User.username,
+            updated_at: moment(date, 'YYYY-MM-DD').format('MMM DD, YYYY'),
+            content: dbPostData.content
+         },
+         comments: dbCommentData.map((comment) => {
+            // only need date part of timestamp
+            let c_date = JSON.stringify(comment.createdAt);
+            c_date = c_date.substring(1, 11);
+            return {
+               author: comment.User.username,
+               created_at: moment(c_date, 'YYYY-MM-DD').format('MMM DD, YYYY'),
+               content: comment.text,
+               user_id: comment.user_id
+            };
+         })
+      }
+      // we chillin
+      res.status(200).json({ data: res_data });
+      // res.render('post-view', { data: res_data });
    } catch (err) {
       console.log(err);
       res.status(500).json(err);
