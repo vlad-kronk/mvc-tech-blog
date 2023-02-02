@@ -151,7 +151,8 @@ router.get("/post/:id", async (req, res) => {
             model: User,
             attributes: ['username']
          },
-         attributes: ['id', 'text', 'user_id', 'createdAt']
+         attributes: ['id', 'text', 'user_id', 'createdAt'],
+         order: [['createdAt', 'DESC']],
       });
       // format date for display
       let date = JSON.stringify(dbPostData.updatedAt);
@@ -181,9 +182,8 @@ router.get("/post/:id", async (req, res) => {
             };
          })
       }
-      // we chillin
-      res.status(200).json({ data: res_data });
-      // res.render('post-view', { data: res_data });
+      // we chillin 
+      res.render('post-view', { data: res_data });
    } catch (err) {
       console.log(err);
       res.status(500).json(err);

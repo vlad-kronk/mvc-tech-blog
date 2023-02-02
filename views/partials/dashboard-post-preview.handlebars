@@ -1,16 +1,16 @@
 <div class="row px-0 mb-3">
    <div class="col-10 px-0">
-      <a class="text-dark" href="/post/{{arg.id}}" style="text-decoration:none">
+      <a class="text-dark" href="/post/{{ arg.id }}" style="text-decoration:none">
          <div class="card w-100">
             <div class="card-body">
-               <h4 class="card-title post-title">{{arg.title}}</h4>
-               <p class="card-text text-muted">{{arg.updated_at}}</p>
+               <h4 class="card-title post-title pb-1">{{ arg.title }}</h4>
+               <p class="card-text text-muted">{{ arg.updated_at }}</p>
             </div>
          </div>
       </a>
    </div>
    <div class="col-2">
-      <a href="post/edit/{{arg.id}}">
+      <a href="post/edit/{{ arg.id }}">
          <button class="btn btn-warning edit-btn">
             Edit
          </button>
