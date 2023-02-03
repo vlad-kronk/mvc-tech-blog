@@ -114,9 +114,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
          page_title: 'Dashboard',
          logged_in: req.session.logged_in,
          background_image: req.session.bg_image || 3,
-         user: req.session.username,
+         user: {
+            username: req.session.username,
+            name: req.session.name
+         },
          posts: post_data
       }
+
+      console.log(res_data);
       res.render('dashboard-view', { data: res_data });
    } catch (err) {
       console.log(err);
@@ -221,7 +226,7 @@ router.get('/post/edit/:id', async (req, res) => {
                   content: currentPostData.content
                }
             }
-            res.status(400).json({ data: res_data })
+            res.status(400).json({ data: res_data });
             // res.render('post-edit', { data: res_data });
             return;
          }

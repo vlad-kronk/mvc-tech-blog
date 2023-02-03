@@ -31,6 +31,7 @@ router.post('/login', async (req, res) => {
          req.session.logged_in = true; // used by browser to mark user as logged in
          req.session.user_id = dbUserData.id;
          req.session.username = dbUserData.username;
+         req.session.name = dbUserData.name;
          req.session.bg_image = dbUserData.background_image;
          res.status(200).json({ user: dbUserData, message: "You are now logged in." });
       });
