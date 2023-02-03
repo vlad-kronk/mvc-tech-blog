@@ -30,6 +30,8 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
          req.session.logged_in = true; // used by browser to mark user as logged in
          req.session.user_id = dbUserData.id;
+         req.session.username = dbUserData.username;
+         req.session.bg_image = dbUserData.background_image;
          res.status(200).json({ user: dbUserData, message: "You are now logged in." });
       });
    } catch (err) {
@@ -70,6 +72,8 @@ router.post('/signup', async (req, res) => {
       req.session.save(() => {
          req.session.logged_in = true; // used by browser to mark user as logged in
          req.session.user_id = dbUserData.id;
+         req.session.username = dbUserData.username;
+         req.session.bg_image = 3;
          res.status(200).json({ user: dbUserData, message: "Signed up and logged in." });
       });
    } catch (err) {

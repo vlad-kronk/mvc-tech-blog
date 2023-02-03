@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const moment = require('moment')
+const moment = require('moment');
+const withAuth = require('../utils/auth');
 
 // import models
 const { Post, User, Comment } = require('../models');
@@ -46,7 +47,9 @@ router.get('/', async (req, res) => {
       // object with all required page data
       const res_data = {
          page_title: 'Home',
+         background_image: req.session.bg_image || 3,
          logged_in: req.session.logged_in,
+
          // logged_in: true,
          posts: post_previews
       }
@@ -65,59 +68,56 @@ router.get('/login', async (req, res) => {
       res.redirect('/');
       return;
    }
+   const res_data = {
+      page_title: "Login",
+      background_image: req.session.background_image || 3
+   }
    // if not, render login page
-   res.render('login');
+   res.render('login', { data: res_data });
 });
 
 // dashboard home route
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
    // only execute if the user is logged in
    try {
-      if (req.session.logged_in) {
-         // try to get all posts from the user
-         const dbUserPosts = await Post.findAll({
-            where: {
-               user_id: req.session.user_id
-            },
-            // don't need content or author of post
-            attributes: [
-               'id',
-               'title',
-               'updatedAt',
-               'createdAt'
-            ],
-            // same as instance.get({ plain: true })
-            nest: true,
-            raw: true
-         });
-         // get user's first name
-         const dbUserName = await User.findByPk(req.session.user_id, {
-            attributes: ['id', 'name'],
-            nest: true,
-            raw: true,
-         });
-         // map post data to format dates
-         const post_data = dbUserPosts.map((post) => {
-            // only need date part of timestamp
-            let date = JSON.stringify(post.updatedAt);
-            date = date.substring(1, 11);
-            // formats object for returned array
-            return {
-               id: post.id,
-               title: post.title,
-               // pre-formats the date for display
-               updated_at: moment(date, 'YYYY-MM-DD').format('MMM DD, YYYY')
-            }
-         });
-         // set up an object with all req'd page data
-         const res_data = {
-            page_title: 'Dashboard',
-            logged_in: req.session.logged_in,
-            user: dbUserName,
-            posts: post_data
+      // try to get all posts from the user
+      const dbUserPosts = await Post.findAll({
+         where: {
+            user_id: req.session.user_id
+         },
+         // don't need content or author of post
+         attributes: [
+            'id',
+            'title',
+            'updatedAt',
+            'createdAt'
+         ],
+         // same as instance.get({ plain: true })
+         nest: true,
+         raw: true
+      });
+      // map post data to format dates
+      const post_data = dbUserPosts.map((post) => {
+         // only need date part of timestamp
+         let date = JSON.stringify(post.updatedAt);
+         date = date.substring(1, 11);
+         // formats object for returned array
+         return {
+            id: post.id,
+            title: post.title,
+            // pre-formats the date for display
+            updated_at: moment(date, 'YYYY-MM-DD').format('MMM DD, YYYY')
          }
-         res.render('dashboard-view', { data: res_data });
+      });
+      // set up an object with all req'd page data
+      const res_data = {
+         page_title: 'Dashboard',
+         logged_in: req.session.logged_in,
+         background_image: req.session.bg_image || 3,
+         user: req.session.username,
+         posts: post_data
       }
+      res.render('dashboard-view', { data: res_data });
    } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -161,6 +161,7 @@ router.get("/post/:id", async (req, res) => {
       const res_data = {
          page_title: dbPostData.title,
          logged_in: req.session.logged_in,
+         background_image: req.session.bg_image || 3,
          user: {
             id: req.session.user_id
          },
@@ -189,5 +190,47 @@ router.get("/post/:id", async (req, res) => {
       res.status(500).json(err);
    }
 });
+
+// render the post edit page
+router.get('/post/edit/:id', async (req, res) => {
+   try {
+      // only render page if logged in user is author of post
+      // also, user must be logged in
+      if (req.session.logged_in) {
+         const userPosts = await Post.findAll({
+            where: {
+               user_id: req.session.user_id
+            },
+            attributes: ['id', 'title', 'content'],
+            nest: true,
+            raw: true
+         });
+         // convert array of objects containing id's to array of id's
+         const userPostIdArr = userPosts.map((obj) => {
+            return "" + obj.id; // converts to string because array.includes tests ===
+         });
+         // if the user is indeed the author of the post they're trying to edit
+         if (userPostIdArr.includes(req.params.id)) {
+            const currentPostData = userPosts.find((post) => post.id = req.params.id);
+            const res_data = {
+               page_title: "Edit: " + currentPostData.title,
+               logged_in: req.session.logged_in,
+               background_image: req.session.bg_image || 3,
+               post: {
+                  title: currentPostData.title,
+                  content: currentPostData.content
+               }
+            }
+            res.status(400).json({ data: res_data })
+            // res.render('post-edit', { data: res_data });
+            return;
+         }
+      }
+      res.sendStatus(404);
+   } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+   }
+})
 
 module.exports = router;

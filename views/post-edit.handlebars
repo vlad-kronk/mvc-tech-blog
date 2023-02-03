@@ -1,17 +1,19 @@
 <div class="page-content bg-light">
    <h1 class="display-1 d-block mx-auto my-5 w-75">Let's get this sorted.</h1>
    <div class="w-75 mx-auto">
-      <div class="mb-3 w-100">
-         <label for="title" class="form-label display-5 mb-5">Edit away:</label>
-         <input type="text" class="form-control" id="postTitle" value={{ data.post.title }}>
-      </div>
-      <div class="mb-3 w-100">
-         <textarea class="form-control" id="postContent" rows="10">
-            {{ data.post.content }}
-         </textarea>
-      </div>
-      <button class="btn btn-primary save-btn" style="width: 100px;" type="submit">Save</button>
-      <a href="/post/{{ data.post.id }}">
+      <form id="post-edit-form">
+         <div class="mb-3 w-100">
+            <label for="title" class="form-label display-5 mb-5">Edit away:</label>
+            <input type="text" class="form-control" id="postTitle" value={{ data.post.title }}>
+         </div>
+         <div class="mb-3 w-100">
+            <textarea class="form-control" id="postContent" rows="30">
+               {{ data.post.content }}
+            </textarea>
+         </div>
+         <button class="btn btn-primary save-btn" style="width: 100px;" type="submit">Save</button>
+      </form>
+      <a href="/dashboard">
          <button class="btn btn-secondary cancel-btn" style="width: 100px;">Cancel</button>
       </a>
       <button class="btn btn-danger cancel-btn" id="delete-post-btn" style="width: 150px; float: right;">
@@ -19,3 +21,4 @@
       </button>
    </div>
 </div>
+<script src="/assets/scripts/post-edit.js" type="text/javascript"></script>
