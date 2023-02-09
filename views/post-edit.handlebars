@@ -4,21 +4,21 @@
       <form id="post-edit-form">
          <div class="mb-3 w-100">
             <label for="title" class="form-label display-5 mb-5">Edit away:</label>
-            <input type="text" class="form-control" id="postTitle" value={{ data.post.title }}>
+            <input type="text" class="form-control" id="postTitle" value="{{ data.post.title }}">
          </div>
-         <div class="mb-3 w-100">
+         <div class=" mb-3 w-100">
             <textarea class="form-control" id="postContent" rows="30">
                {{ data.post.content }}
             </textarea>
          </div>
          <button class="btn btn-primary save-btn" style="width: 100px;" type="submit">Save</button>
+         <a href="/dashboard">
+            <button class="btn btn-secondary cancel-btn" style="width: 100px;">Cancel</button>
+         </a>
+         <button class="btn btn-danger cancel-btn" id="delete-post-btn" style="width: 150px; float: right;">
+            Delete post
+         </button>
       </form>
-      <a href="/dashboard">
-         <button class="btn btn-secondary cancel-btn" style="width: 100px;">Cancel</button>
-      </a>
-      <button class="btn btn-danger cancel-btn" id="delete-post-btn" style="width: 150px; float: right;">
-         Delete post
-      </button>
    </div>
 </div>
 <script src="/assets/scripts/post-edit.js" type="text/javascript"></script>

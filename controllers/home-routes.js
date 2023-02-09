@@ -226,8 +226,8 @@ router.get('/post/edit/:id', async (req, res) => {
                   content: currentPostData.content
                }
             }
-            res.status(400).json({ data: res_data });
-            // res.render('post-edit', { data: res_data });
+            // res.status(400).json({ data: res_data });
+            res.render('post-edit', { data: res_data });
             return;
          }
       }
